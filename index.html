@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Automation ROI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+        "recharts": "https://aistudiocdn.com/recharts@^3.3.0",
+        "html2canvas": "https://aistudiocdn.com/html2canvas@^1.4.1",
+        "jspdf": "https://aistudiocdn.com/jspdf@^2.5.1"
+      }
+    }
+    </script>
+    <style>
+      @keyframes fadeInHighlight {
+        0% { background-color: rgba(99, 102, 241, 0.2); transform: scale(0.98); }
+        100% { background-color: transparent; transform: scale(1); }
+      }
+      .highlight-on-load {
+        animation: fadeInHighlight 1s ease-out;
+        border-radius: 0.75rem; /* Corresponds to rounded-xl */
+      }
+      body {
+        background-color: #020617; /* slate-950 */
+        background-image: radial-gradient(circle at top, rgba(17, 24, 39, 0.8) 0%, #020617 50%);
+      }
+      .card-glow {
+        position: relative;
+        overflow: hidden;
+      }
+      .card-glow::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(ellipse 50% 80% at 50% -20%, rgba(99, 102, 241, 0.2), transparent);
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        z-index: 0;
+      }
+      .card-glow:hover::before {
+        opacity: 1;
+      }
+      .content-wrapper > * {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+</head>
+<body class="bg-slate-950 font-sans">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
